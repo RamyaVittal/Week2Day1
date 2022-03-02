@@ -1,5 +1,7 @@
 package Week1Setup;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,29 +16,34 @@ public class SeleniumTrial {
 		 
 			 WebDriverManager.chromedriver().setup();
 			 ChromeDriver driver=new ChromeDriver();
+			 driver.manage().window().maximize();
 			 driver.get("http://leaftaps.com/opentaps/control/main");
-			 WebElement el1=driver.findElement(By.id("username"));
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+			 WebElement el1=driver.findElement(By.xpath("//input[@id='username']"));
 			 el1.sendKeys("demosalesmanager");
-			 WebElement el2 = driver.findElement(By.id("password"));
+			 WebElement el2 = driver.findElement(By.xpath("//input[@id='password']"));
 			 el2.sendKeys("crmsfa");
-			 WebElement el3 = driver.findElement(By.className("decorativeSubmit"));
+			 WebElement el3 = driver.findElement(By.xpath("//input[@class = 'decorativeSubmit']"));
 			 el3.click();
-			 WebElement el4 = driver.findElement(By.linkText("CRM/SFA"));
+			 WebElement el4 = driver.findElement(By.xpath("//a[contains(text(),'CRM/SFA')]"));
 			 el4.click();
-			 WebElement el5 = driver.findElement(By.linkText("Leads"));
+			 WebElement el5 = driver.findElement(By.xpath("//a[contains(text(),'Leads')]"));
 			 el5.click();
-			 WebElement el6 = driver.findElement(By.linkText("Create Lead"));
+			 WebElement el6 = driver.findElement(By.xpath("//a[contains(text(),'Create Lead')]"));
 			 el6.click();
-			 WebElement el7 = driver.findElement(By.id("createLeadForm_companyName"));
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+			 WebElement el7 = driver.findElement(By.xpath("//input[@id = 'createLeadForm_companyName']"));
 			 el7.sendKeys("Amazon dev centre");
-			 WebElement el8 = driver.findElement(By.id("createLeadForm_firstName"));
+			 WebElement el8 = driver.findElement(By.xpath("//input[@id = 'createLeadForm_firstName']"));
 			 el8.sendKeys("Ram");
-			 WebElement el9 = driver.findElement(By.id("createLeadForm_lastName"));
+			 WebElement el9 = driver.findElement(By.xpath("//input[@id = 'createLeadForm_lastName']"));
 			 el9.sendKeys("Vittal");
-			 driver.findElement(By.id("createLeadForm_firstNameLocal")).sendKeys("Ramyasuku");
-			 driver.findElement(By.id("createLeadForm_departmentName")).sendKeys("Computer Science dept");
-			 driver.findElement(By.id("createLeadForm_description")).sendKeys("Student of selenium feb 22 batch");
-			 driver.findElement(By.name("primaryEmail")).sendKeys("ramya.vittal@gmail.com");
+			 driver.findElement(By.xpath("//input[@id='createLeadForm_firstNameLocal']")).sendKeys("Ramyasuku");
+			 driver.findElement(By.xpath("//input[@id='createLeadForm_departmentName']")).sendKeys("Computer Science dept");
+			 driver.findElement(By.xpath("//textarea[@id='createLeadForm_description']")).sendKeys("Student of selenium feb 22 batch");
+			 driver.findElement(By.xpath("//input[@id='createLeadForm_primaryEmail']")).sendKeys("ramya.vittal@gmail.com");
 			 WebElement el11= driver.findElement(By.name("generalStateProvinceGeoId"));
 			 Select dd = new Select(el11);
 			 dd.selectByVisibleText("New York");
